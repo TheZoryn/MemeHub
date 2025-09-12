@@ -9,6 +9,7 @@
     margin: 0;
     padding: 20px;
     font-family: 'Orbitron', sans-serif;
+    background: #0f0c29; 
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #fff;
     text-align: center;
@@ -73,29 +74,59 @@
     background: #1e90ff;
     color: #fff;
     margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2em;
   }
 
   #viewMore:hover {
     background: #0090ff;
   }
+
+  /* Ad container styling */
+  .ad-container {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 320px;
+  }
 </style>
 </head>
 <body>
 
-<h1>Zoryn Meme Hub</h1>
+<h1>🔥 Zoryn Meme Hub 🔥</h1>
+
+<!-- Native Ad (Top) -->
+<div class="ad-container">
+<script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
+<div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
+</div>
 
 <div id="meme-container"></div>
 
-<button id="viewMore" class="btn">View More Memes</button>
+<!-- Banner Ad 320x50 -->
+<div class="ad-container">
+<script type="text/javascript">
+  atOptions = {
+    'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
+</div>
+
+<!-- Buttons -->
+<button id="viewMore">View More Memes</button>
 
 <script>
-  // Add your meme filenames here
+  // Your meme files (replace with actual meme names)
   const memes = [
     "memes/meme1.jpg",
     "memes/meme2.jpg",
     "memes/meme3.jpg",
     "memes/meme4.jpg"
-    // Add more later
+    // Add more memes later
   ];
 
   function shuffle(array) {
@@ -119,13 +150,18 @@
   }
 
   function downloadMeme(url) {
-    // Later you can replace url with meme1.zip, etc.
+    // You can later replace this with individual ZIP links
     const a = document.createElement("a");
     a.href = url;
     a.setAttribute("download", url.split("/").pop());
     document.body.appendChild(a);
     a.click();
     a.remove();
+
+    // Popunder ad (on download click)
+    const pop = document.createElement("script");
+    pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
+    document.body.appendChild(pop);
   }
 
   let firstClick = true;
@@ -140,6 +176,25 @@
   // Initial load
   loadMemes();
 </script>
+
+<!-- Banner Ad 300x250 -->
+<div class="ad-container">
+<script type="text/javascript">
+  atOptions = {
+    'key' : '2918ca768846807031a94b527a5b5c01',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
+</div>
+
+<!-- Social bar -->
+<div class="ad-container">
+<script type='text/javascript' src='//pl27625440.revenuecpmgate.com/8b/69/cb/8b69cbf7d3956bff327ed78287a2b88f.js'></script>
+</div>
 
 </body>
 </html>
