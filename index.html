@@ -1,114 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meme Hub</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2.5em;
-    }
-    #meme-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .meme {
-      background: #2a2a40;
-      padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .meme:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-    .meme img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    #downloadAll {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #ff4757;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      color: #fff;
-      font-size: 1.2em;
-    }
-    #viewMore {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #1e90ff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      color: #fff;
-      font-size: 1.2em;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoryn Meme Hub</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff6ec7;
+    text-shadow: 2px 2px 5px #000;
+  }
+
+  #meme-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .meme {
+    background: #1b1b2f;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .meme:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #ff6ec7;
+  }
+
+  .meme img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn-download {
+    background: #ff6ec7;
+    color: #fff;
+  }
+
+  .btn-download:hover {
+    background: #ff3ec7;
+  }
+
+  #viewMore {
+    background: #1e90ff;
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  #viewMore:hover {
+    background: #0090ff;
+  }
+</style>
 </head>
 <body>
-  <h1>🔥 Meme Hub 🔥</h1>
-  <div id="meme-container"></div>
 
-  <button id="downloadAll">⬇ Download All Memes</button>
-  <br>
-  <button id="viewMore">View More</button>
+<h1>Zoryn Meme Hub</h1>
 
-  <script>
-    const memes = [
-      "memes/mem1.jpg",
-      "memes/mem2.jpg",
-      "memes/mem3.jpg",
-      "memes/mem4.jpg"
-      // Add more memes here if you want
-    ];
+<div id="meme-container"></div>
 
-    function shuffle(array) {
-      return array.sort(() => 0.5 - Math.random());
-    }
+<button id="viewMore" class="btn">View More Memes</button>
 
-    function loadMemes() {
-      const container = document.getElementById("meme-container");
-      container.innerHTML = "";
-      const selected = shuffle(memes).slice(0, 4);
+<script>
+  // Add your meme filenames here
+  const memes = [
+    "memes/meme1.jpg",
+    "memes/meme2.jpg",
+    "memes/meme3.jpg",
+    "memes/meme4.jpg"
+    // Add more later
+  ];
 
-      selected.forEach(url => {
-        const div = document.createElement("div");
-        div.className = "meme";
-        div.innerHTML = `<img src="${url}" alt="Meme">`;
-        container.appendChild(div);
-      });
-    }
+  function shuffle(array) {
+    return array.sort(() => 0.5 - Math.random());
+  }
 
-    document.getElementById("downloadAll").addEventListener("click", () => {
-      window.location.href = "memes.zip";
+  function loadMemes() {
+    const container = document.getElementById("meme-container");
+    container.innerHTML = "";
+    const selected = shuffle(memes).slice(0, 4);
+
+    selected.forEach(url => {
+      const div = document.createElement("div");
+      div.className = "meme";
+      div.innerHTML = `
+        <img src="${url}" alt="Meme">
+        <button class="btn btn-download" onclick="downloadMeme('${url}')">⬇ Download</button>
+      `;
+      container.appendChild(div);
     });
+  }
 
-    let firstClick = true;
-    document.getElementById("viewMore").addEventListener("click", () => {
-      if (firstClick) {
-        window.open(window.location.href, "_blank");
-        firstClick = false;
-      }
-      loadMemes();
-    });
+  function downloadMeme(url) {
+    // Later you can replace url with meme1.zip, etc.
+    const a = document.createElement("a");
+    a.href = url;
+    a.setAttribute("download", url.split("/").pop());
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
 
+  let firstClick = true;
+  document.getElementById("viewMore").addEventListener("click", () => {
+    if(firstClick){
+      window.open(window.location.href, "_blank");
+      firstClick = false;
+    }
     loadMemes();
-  </script>
+  });
+
+  // Initial load
+  loadMemes();
+</script>
+
 </body>
 </html>
