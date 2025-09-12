@@ -82,7 +82,7 @@
 
 <h1>🔥 Zoryn Meme Hub 🔥</h1>
 <div id="instruction">
-Click on a meme to start download. Close the ad or press back — the download will begin automatically.
+Click on a meme to start download. Close the ad or press back — your download will begin automatically.
 </div>
 
 <!-- Native ad -->
@@ -96,12 +96,12 @@ Click on a meme to start download. Close the ad or press back — the download w
 <button id="viewMore">View More Memes</button>
 
 <script>
-  // Use raw GitHub URLs for images
+  // Raw GitHub URLs for your repo TheZoryn/MemeHub
   const memes = [
-    "https://raw.githubusercontent.com/<username>/<repo>/main/memes/meme1.jpg",
-    "https://raw.githubusercontent.com/<username>/<repo>/main/memes/meme2.jpg",
-    "https://raw.githubusercontent.com/<username>/<repo>/main/memes/meme3.jpg",
-    "https://raw.githubusercontent.com/<username>/<repo>/main/memes/meme4.jpg"
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme1.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme2.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme3.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme4.jpg"
   ];
 
   function shuffle(array) {
@@ -124,11 +124,9 @@ Click on a meme to start download. Close the ad or press back — the download w
 
   // Download only after popunder
   function downloadWithPop(url) {
-    // Open popunder ad
     const pop = document.createElement("script");
     pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
 
-    // When ad script loads, start download
     pop.onload = () => {
       const a = document.createElement("a");
       a.href = url;
@@ -145,8 +143,9 @@ Click on a meme to start download. Close the ad or press back — the download w
     loadMemes();
   });
 
-  // Initial load
-  loadMemes();
+  window.onload = function() {
+    loadMemes();
+  };
 </script>
 
 <!-- Banner ad 320x50 -->
