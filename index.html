@@ -1,189 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zoryn Meme Hub</title>
-<style>
-  body {
-    margin: 0;
-    padding: 20px;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #fff;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: #1e90ff;
-    text-shadow: 2px 2px 5px #000;
-  }
-
-  #instruction {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    color: #aaa;
-  }
-
-  #meme-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 900px;
-    margin: auto;
-  }
-
-  .meme {
-    background: #1b1b2f;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-
-  .meme:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px #1e90ff;
-  }
-
-  .meme img {
-    width: 100%;
-    border-radius: 12px;
-  }
-
-  #viewMore {
-    background: #1e90ff;
-    color: #fff;
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  #viewMore:hover {
-    background: #00bfff;
-  }
-
-  .ad-container {
-    margin: 20px auto;
-    text-align: center;
-    max-width: 320px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemeHub</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #58a6ff;
+      margin-bottom: 20px;
+    }
+    .meme {
+      margin: 20px auto;
+      border: 2px solid #58a6ff;
+      border-radius: 12px;
+      padding: 10px;
+      max-width: 400px;
+      background: #161b22;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .meme:hover {
+      transform: scale(1.03);
+    }
+    .meme img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .instructions {
+      margin: 15px 0;
+      font-size: 14px;
+      color: #8b949e;
+    }
+    .more-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #58a6ff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .more-btn:hover {
+      background-color: #1f6feb;
+    }
+  </style>
 </head>
 <body>
+  <h1>Welcome to MemeHub 😂</h1>
+  <p class="instructions">👉 Click a meme → close ad tab → come back → your download starts!</p>
 
-<h1>🔥 Zoryn Meme Hub 🔥</h1>
-<div id="instruction">
-Click a meme to open ad → then close or return, and your download will start!
-</div>
+  <div class="meme" onclick="showAdAndDownload('memes/meme1.jpg')">
+    <img src="memes/meme1.jpg" alt="Meme 1">
+    <p>Click to download</p>
+  </div>
 
-<!-- Smartlink -->
-<div class="ad-container">
-  <a href="https://www.revenuecpmgate.com/yj6jz0jce?key=faf035fd65164ec41eca575854da1535" target="_blank" style="color:#1e90ff;font-weight:bold;">
-    🎁 Special Meme Smartlink 🎁
-  </a>
-</div>
+  <div class="meme" onclick="showAdAndDownload('memes/meme2.jpg')">
+    <img src="memes/meme2.jpg" alt="Meme 2">
+    <p>Click to download</p>
+  </div>
 
-<!-- Native ad -->
-<div class="ad-container">
-<script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
-<div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
-</div>
+  <div class="meme" onclick="showAdAndDownload('memes/meme3.jpg')">
+    <img src="memes/meme3.jpg" alt="Meme 3">
+    <p>Click to download</p>
+  </div>
 
-<div id="meme-container"></div>
+  <div class="meme" onclick="showAdAndDownload('memes/meme4.jpg')">
+    <img src="memes/meme4.jpg" alt="Meme 4">
+    <p>Click to download</p>
+  </div>
 
-<button id="viewMore">View More Memes</button>
+  <a class="more-btn" href="https://thezoryn.github.io/MemeHub/" target="_blank">View More Memes</a>
 
-<script>
-  // Raw GitHub URLs
-  const memes = [
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme1.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme2.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme3.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme4.jpg"
-  ];
+  <script type="text/javascript">
+    function showAdAndDownload(fileUrl) {
+      // Load popunder script dynamically
+      var s = document.createElement("script");
+      s.src = "https://www.revenuecpmnetwork.com/script.js"; // replace with your ad network JS link
+      document.body.appendChild(s);
 
-  function shuffle(array) {
-    return array.sort(() => 0.5 - Math.random());
-  }
-
-  function loadMemes() {
-    const container = document.getElementById("meme-container");
-    container.innerHTML = "";
-    const selected = shuffle(memes).slice(0,4);
-
-    selected.forEach(url => {
-      const div = document.createElement("div");
-      div.className = "meme";
-      div.innerHTML = `<img src="${url}" alt="Meme">`;
-      div.onclick = () => downloadWithPop(url);
-      container.appendChild(div);
-    });
-  }
-
-  // Popunder then download
-  function downloadWithPop(url) {
-    const pop = window.open("//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js", "_blank");
-
-    setTimeout(() => {
-      const a = document.createElement("a");
-      a.href = url;
-      a.setAttribute("download", url.split("/").pop());
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }, 3000); // 3 sec delay
-  }
-
-  document.getElementById("viewMore").addEventListener("click", () => {
-    const newUrl = window.location.href + "?t=" + new Date().getTime();
-    window.open(newUrl, "_blank");
-  });
-
-  window.onload = function() {
-    loadMemes();
-  };
-</script>
-
-<!-- Banner ad 320x50 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
-</div>
-
-<!-- Banner ad 300x250 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : '2918ca768846807031a94b527a5b5c01',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
-</div>
-
-<!-- Social bar -->
-<div class="ad-container">
-<script type='text/javascript' src='//pl27625440.revenuecpmgate.com/8b/69/cb/8b69cbf7d3956bff327ed78287a2b88f.js'></script>
-</div>
-
+      // After a delay, start the download
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.href = fileUrl;
+        link.download = fileUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 4000); // 4s delay to ensure ad script runs
+    }
+  </script>
 </body>
 </html>
+s
