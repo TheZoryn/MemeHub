@@ -58,7 +58,7 @@
 </head>
 <body>
   <h1>Welcome to MemeHub 😂</h1>
-  <p class="instructions">👉 Click a meme → close ad tab → come back → your download starts!</p>
+  <p class="instructions">👉 Click a meme → ad opens → close/come back → your download starts!</p>
 
   <div class="meme" onclick="showAdAndDownload('memes/meme1.jpg')">
     <img src="memes/meme1.jpg" alt="Meme 1">
@@ -82,14 +82,12 @@
 
   <a class="more-btn" href="https://thezoryn.github.io/MemeHub/" target="_blank">View More Memes</a>
 
-  <script type="text/javascript">
+  <script>
     function showAdAndDownload(fileUrl) {
-      // Load popunder script dynamically
-      var s = document.createElement("script");
-      s.src = "https://www.revenuecpmnetwork.com/script.js"; // replace with your ad network JS link
-      document.body.appendChild(s);
+      // Open your smartlink in a new tab
+      window.open("https://www.revenuecpmgate.com/yj6jz0jce?key=faf035fd65164ec41eca575854da1535", "_blank");
 
-      // After a delay, start the download
+      // After short delay, trigger download
       setTimeout(() => {
         let link = document.createElement("a");
         link.href = fileUrl;
@@ -97,9 +95,8 @@
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      }, 4000); // 4s delay to ensure ad script runs
+      }, 3000); // 3 seconds
     }
   </script>
 </body>
 </html>
-s
