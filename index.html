@@ -75,14 +75,20 @@
     text-align: center;
     max-width: 320px;
   }
-
 </style>
 </head>
 <body>
 
 <h1>🔥 Zoryn Meme Hub 🔥</h1>
 <div id="instruction">
-Click on a meme to start download. Close the ad or press back — your download will begin automatically.
+Click a meme to open ad → then close or return, and your download will start!
+</div>
+
+<!-- Smartlink -->
+<div class="ad-container">
+  <a href="https://www.revenuecpmgate.com/yj6jz0jce?key=faf035fd65164ec41eca575854da1535" target="_blank" style="color:#1e90ff;font-weight:bold;">
+    🎁 Special Meme Smartlink 🎁
+  </a>
 </div>
 
 <!-- Native ad -->
@@ -93,63 +99,57 @@ Click on a meme to start download. Close the ad or press back — your download 
 
 <div id="meme-container"></div>
 
-<!-- Smartlink ad -->
-<div class="ad-container">
-<iframe src="https://www.revenuecpmgate.com/yj6jz0jce?key=faf035fd65164ec41eca575854da1535" width="320" height="50" frameborder="0" scrolling="no"></iframe>
-</div>
-
 <button id="viewMore">View More Memes</button>
 
 <script>
-const memes = [
-  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
-  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
-  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg",
-  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
-];
+  // Raw GitHub URLs
+  const memes = [
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme1.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme2.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme3.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme4.jpg"
+  ];
 
-function shuffle(array) {
-  return array.sort(() => 0.5 - Math.random());
-}
+  function shuffle(array) {
+    return array.sort(() => 0.5 - Math.random());
+  }
 
-function loadMemes() {
-  const container = document.getElementById("meme-container");
-  container.innerHTML = "";
-  const selected = shuffle(memes).slice(0,4);
+  function loadMemes() {
+    const container = document.getElementById("meme-container");
+    container.innerHTML = "";
+    const selected = shuffle(memes).slice(0,4);
 
-  selected.forEach(url => {
-    const div = document.createElement("div");
-    div.className = "meme";
-    div.innerHTML = `<img src="${url}" alt="Meme">`;
-    div.onclick = () => downloadWithPop(url);
-    container.appendChild(div);
-  });
-}
+    selected.forEach(url => {
+      const div = document.createElement("div");
+      div.className = "meme";
+      div.innerHTML = `<img src="${url}" alt="Meme">`;
+      div.onclick = () => downloadWithPop(url);
+      container.appendChild(div);
+    });
+  }
 
-// Popunder + download
-function downloadWithPop(url) {
-  const pop = document.createElement("script");
-  pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
-  pop.onload = () => {
-    const a = document.createElement("a");
-    a.href = url;
-    a.setAttribute("download", url.split("/").pop());
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  };
-  document.body.appendChild(pop);
-}
+  // Popunder then download
+  function downloadWithPop(url) {
+    const pop = window.open("//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js", "_blank");
 
-// Open new tab with fresh memes using timestamp
-document.getElementById("viewMore").addEventListener("click", () => {
-    const newUrl = window.location.href.split("?")[0] + "?t=" + new Date().getTime();
+    setTimeout(() => {
+      const a = document.createElement("a");
+      a.href = url;
+      a.setAttribute("download", url.split("/").pop());
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }, 3000); // 3 sec delay
+  }
+
+  document.getElementById("viewMore").addEventListener("click", () => {
+    const newUrl = window.location.href + "?t=" + new Date().getTime();
     window.open(newUrl, "_blank");
-});
+  });
 
-window.onload = function() {
-  loadMemes();
-};
+  window.onload = function() {
+    loadMemes();
+  };
 </script>
 
 <!-- Banner ad 320x50 -->
