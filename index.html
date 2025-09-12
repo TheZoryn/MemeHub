@@ -17,7 +17,7 @@
   h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
-    color: #1e90ff;
+    color: #1e90ff; /* Blue theme */
     text-shadow: 2px 2px 5px #000;
   }
 
@@ -57,7 +57,7 @@
   .download-text {
     margin-top: 10px;
     font-size: 1.1em;
-    color: #1e90ff;
+    color: #1e90ff; /* Blue text */
     cursor: pointer;
     transition: 0.3s;
   }
@@ -82,13 +82,6 @@
   #viewMore:hover {
     background: #00bfff;
   }
-
-  .ad-container {
-    margin: 20px auto;
-    text-align: center;
-    max-width: 320px;
-  }
-
 </style>
 </head>
 <body>
@@ -96,12 +89,6 @@
 <h1>🔥 Zoryn Meme Hub 🔥</h1>
 <div id="instruction">
 Click on a meme to download, then close the ad or press back — your download will start
-</div>
-
-<!-- Native ad (optional top) -->
-<div class="ad-container">
-<script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
-<div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
 </div>
 
 <div id="meme-container"></div>
@@ -138,17 +125,14 @@ function loadMemes() {
   });
 }
 
-// Download meme with popunder
+// Download meme with optional popunder
 function downloadWithPop(url) {
-  // Open popunder ad
-  window.open('','_blank'); // optional: can put ad script here
-
-  // Popunder ad script
+  // Optional popunder ad
   const pop = document.createElement("script");
   pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
   document.body.appendChild(pop);
 
-  // Delay download so user can close or come back
+  // Delay download so user can close/come back
   setTimeout(() => {
     const a = document.createElement("a");
     a.href = url;
