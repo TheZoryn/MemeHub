@@ -1,209 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MemeHub by Zoryn</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #121212;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header {
-    text-align: center;
-    padding: 20px;
-  }
-
-  header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3rem;
-    margin: 0;
-    color: #9b59b6;
-    text-shadow: 2px 2px #000;
-  }
-
-  header p {
-    font-size: 1.2rem;
-    color: #ccc;
-    margin-top: 5px;
-  }
-
-  #alert-banner {
-    background: #e74c3c;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    width: 90%;
-    max-width: 900px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-
-  #meme-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    width: 90%;
-    max-width: 900px;
-    margin: 20px auto;
-  }
-
-  .meme {
-    background: #1e1e1e;
-    padding: 10px;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .meme:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-  }
-
-  .meme img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-
-  .download-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: linear-gradient(45deg, #9b59b6, #8e44ad);
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .download-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-  }
-
-  #load-more {
-    margin: 30px 0;
-    padding: 15px 40px;
-    background: linear-gradient(45deg, #9b59b6, #8e44ad);
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  #load-more:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-  }
-
-  @media (max-width: 600px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meme Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
     #meme-container {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: auto;
     }
-    header h1 {
-      font-size: 2rem;
+    .meme {
+      background: #2a2a40;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    #load-more, .download-btn {
-      padding: 12px 30px;
-      font-size: 1rem;
+    .meme:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
-  }
-</style>
+    .meme img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    #downloadAll {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #ff4757;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.2em;
+    }
+    #viewMore {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #1e90ff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
+  <h1>🔥 Meme Hub 🔥</h1>
+  <div id="meme-container"></div>
 
-<header>
-  <h1>MemeHub</h1>
-  <p>by Zoryn — Your Daily Dose of Memes</p>
-</header>
+  <button id="downloadAll">⬇ Download All Memes</button>
+  <br>
+  <button id="viewMore">View More</button>
 
-<div id="alert-banner">
-  ⚠️ To download a meme: click the download button → you will be redirected to another page. Close it or press back, then return to MemeHub, and your download will start automatically!
-</div>
+  <script>
+    const memes = [
+      "memes/mem1.jpg",
+      "memes/mem2.jpg",
+      "memes/mem3.jpg",
+      "memes/mem4.jpg"
+      // Add more memes here if you want
+    ];
 
-<div id="meme-container"></div>
-<button id="load-more">Load More Memes</button>
+    function shuffle(array) {
+      return array.sort(() => 0.5 - Math.random());
+    }
 
-<script>
-  const memes = [
-    "memes/meme1.jpg",
-    "memes/meme2.jpg",
-    "memes/meme3.jpg",
-    "memes/meme4.jpg",
-    "memes/meme5.jpg",
-    "memes/meme6.jpg",
-    "memes/meme7.jpg",
-    "memes/meme8.jpg"
-    // Add more memes here
-  ];
+    function loadMemes() {
+      const container = document.getElementById("meme-container");
+      container.innerHTML = "";
+      const selected = shuffle(memes).slice(0, 4);
 
-  const container = document.getElementById('meme-container');
-
-  function loadRandomMemes(count = 4) {
-    const shuffled = memes.sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, count);
-    selected.forEach((meme, index) => {
-      const div = document.createElement('div');
-      div.className = 'meme';
-      div.innerHTML = `
-        <img src="${meme}" alt="Meme">
-        <button class="download-btn">Download</button>
-      `;
-      container.appendChild(div);
-    });
-
-    document.querySelectorAll('.download-btn').forEach((btn, i) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const memeURL = selected[i];
-        const pop = window.open('https://your-ad-url.com', '_blank'); // popunder
-        if(pop) pop.blur();
-        window.focus();
-
-        const downloadMeme = () => {
-          const a = document.createElement('a');
-          a.href = memeURL;
-          a.download = memeURL.split('/').pop();
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        };
-
-        const focusHandler = () => {
-          downloadMeme();
-          window.removeEventListener('focus', focusHandler);
-        };
-
-        window.addEventListener('focus', focusHandler);
+      selected.forEach(url => {
+        const div = document.createElement("div");
+        div.className = "meme";
+        div.innerHTML = `<img src="${url}" alt="Meme">`;
+        container.appendChild(div);
       });
+    }
+
+    document.getElementById("downloadAll").addEventListener("click", () => {
+      window.location.href = "memes.zip";
     });
-  }
 
-  // Initial 2x2 load
-  loadRandomMemes();
+    let firstClick = true;
+    document.getElementById("viewMore").addEventListener("click", () => {
+      if (firstClick) {
+        window.open(window.location.href, "_blank");
+        firstClick = false;
+      }
+      loadMemes();
+    });
 
-  // Load More button
-  document.getElementById('load-more').addEventListener('click', () => {
-    window.open(window.location.href, '_blank'); // open new tab for impressions
-    loadRandomMemes();
-  });
-</script>
-
+    loadMemes();
+  </script>
 </body>
 </html>
