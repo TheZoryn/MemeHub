@@ -9,7 +9,6 @@
     margin: 0;
     padding: 20px;
     font-family: 'Orbitron', sans-serif;
-    background: #0f0c29; 
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: #fff;
     text-align: center;
@@ -17,9 +16,15 @@
 
   h1 {
     font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #ff6ec7;
+    margin-bottom: 10px;
+    color: #1e90ff;
     text-shadow: 2px 2px 5px #000;
+  }
+
+  #instruction {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #aaa;
   }
 
   #meme-container {
@@ -40,34 +45,26 @@
 
   .meme:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px #ff6ec7;
+    box-shadow: 0 0 20px #1e90ff;
   }
 
   .meme img {
     width: 100%;
     border-radius: 12px;
+    cursor: pointer;
   }
 
-  .btn {
-    display: inline-block;
+  .download-text {
     margin-top: 10px;
-    padding: 10px 20px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    font-size: 1em;
-    border-radius: 12px;
-    border: none;
+    font-size: 1.1em;
+    color: #1e90ff;
     cursor: pointer;
     transition: 0.3s;
   }
 
-  .btn-download {
-    background: #ff6ec7;
-    color: #fff;
-  }
-
-  .btn-download:hover {
-    background: #ff3ec7;
+  .download-text:hover {
+    color: #00bfff;
+    text-decoration: underline;
   }
 
   #viewMore {
@@ -76,25 +73,32 @@
     margin-top: 20px;
     padding: 12px 24px;
     font-size: 1.2em;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
   }
 
   #viewMore:hover {
-    background: #0090ff;
+    background: #00bfff;
   }
 
-  /* Ad container styling */
   .ad-container {
     margin: 20px auto;
     text-align: center;
     max-width: 320px;
   }
+
 </style>
 </head>
 <body>
 
 <h1>🔥 Zoryn Meme Hub 🔥</h1>
+<div id="instruction">
+Click on a meme to download, then close the ad or press back — your download will start
+</div>
 
-<!-- Native Ad (Top) -->
+<!-- Native ad (optional top) -->
 <div class="ad-container">
 <script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
 <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
@@ -102,99 +106,66 @@
 
 <div id="meme-container"></div>
 
-<!-- Banner Ad 320x50 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
-</div>
-
-<!-- Buttons -->
 <button id="viewMore">View More Memes</button>
 
 <script>
-  // Your meme files (replace with actual meme names)
-  const memes = [
-    "memes/meme1.jpg",
-    "memes/meme2.jpg",
-    "memes/meme3.jpg",
-    "memes/meme4.jpg"
-    // Add more memes later
-  ];
+const memes = [
+  "memes/meme1.jpg",
+  "memes/meme2.jpg",
+  "memes/meme3.jpg",
+  "memes/meme4.jpg"
+];
 
-  function shuffle(array) {
-    return array.sort(() => 0.5 - Math.random());
-  }
+// Shuffle memes
+function shuffle(array) {
+  return array.sort(() => 0.5 - Math.random());
+}
 
-  function loadMemes() {
-    const container = document.getElementById("meme-container");
-    container.innerHTML = "";
-    const selected = shuffle(memes).slice(0, 4);
+// Load 4 memes
+function loadMemes() {
+  const container = document.getElementById("meme-container");
+  container.innerHTML = "";
+  const selected = shuffle(memes).slice(0,4);
 
-    selected.forEach(url => {
-      const div = document.createElement("div");
-      div.className = "meme";
-      div.innerHTML = `
-        <img src="${url}" alt="Meme">
-        <button class="btn btn-download" onclick="downloadMeme('${url}')">⬇ Download</button>
-      `;
-      container.appendChild(div);
-    });
-  }
+  selected.forEach(url => {
+    const div = document.createElement("div");
+    div.className = "meme";
+    div.innerHTML = `
+      <img src="${url}" alt="Meme" onclick="downloadWithPop('${url}')">
+      <div class="download-text" onclick="downloadWithPop('${url}')">Click to Download</div>
+    `;
+    container.appendChild(div);
+  });
+}
 
-  function downloadMeme(url) {
-    // You can later replace this with individual ZIP links
+// Download meme with popunder
+function downloadWithPop(url) {
+  // Open popunder ad
+  window.open('','_blank'); // optional: can put ad script here
+
+  // Popunder ad script
+  const pop = document.createElement("script");
+  pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
+  document.body.appendChild(pop);
+
+  // Delay download so user can close or come back
+  setTimeout(() => {
     const a = document.createElement("a");
     a.href = url;
     a.setAttribute("download", url.split("/").pop());
     document.body.appendChild(a);
     a.click();
     a.remove();
+  }, 1000);
+}
 
-    // Popunder ad (on download click)
-    const pop = document.createElement("script");
-    pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
-    document.body.appendChild(pop);
-  }
-
-  let firstClick = true;
-  document.getElementById("viewMore").addEventListener("click", () => {
-    if(firstClick){
-      window.open(window.location.href, "_blank");
-      firstClick = false;
-    }
-    loadMemes();
-  });
-
-  // Initial load
+document.getElementById("viewMore").addEventListener("click", () => {
   loadMemes();
-</script>
+});
 
-<!-- Banner Ad 300x250 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : '2918ca768846807031a94b527a5b5c01',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
+// Initial load
+loadMemes();
 </script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
-</div>
-
-<!-- Social bar -->
-<div class="ad-container">
-<script type='text/javascript' src='//pl27625440.revenuecpmgate.com/8b/69/cb/8b69cbf7d3956bff327ed78287a2b88f.js'></script>
-</div>
 
 </body>
 </html>
