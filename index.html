@@ -136,9 +136,10 @@ function downloadWithPop(url) {
   document.body.appendChild(pop);
 }
 
-// Open new tab with same page on "View More"
+// Open a new tab with unique URL to force fresh memes
 document.getElementById("viewMore").addEventListener("click", () => {
-  window.open(window.location.href, "_blank");
+    const newUrl = window.location.href + "?t=" + new Date().getTime();
+    window.open(newUrl, "_blank");
 });
 
 window.onload = function() {
@@ -181,4 +182,3 @@ window.onload = function() {
 
 </body>
 </html>
-
