@@ -96,56 +96,54 @@ Click on a meme to start download. Close the ad or press back — your download 
 <button id="viewMore">View More Memes</button>
 
 <script>
-  // Using images at root of repo
-  const memes = [
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
-  ];
+const memes = [
+  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
+  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
+  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg",
+  "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
+];
 
-  function shuffle(array) {
-    return array.sort(() => 0.5 - Math.random());
-  }
+function shuffle(array) {
+  return array.sort(() => 0.5 - Math.random());
+}
 
-  function loadMemes() {
-    const container = document.getElementById("meme-container");
-    container.innerHTML = "";
-    const selected = shuffle(memes).slice(0,4);
+function loadMemes() {
+  const container = document.getElementById("meme-container");
+  container.innerHTML = "";
+  const selected = shuffle(memes).slice(0,4);
 
-    selected.forEach(url => {
-      const div = document.createElement("div");
-      div.className = "meme";
-      div.innerHTML = `<img src="${url}" alt="Meme">`;
-      div.onclick = () => downloadWithPop(url);
-      container.appendChild(div);
-    });
-  }
-
-  // Download only after popunder
-  function downloadWithPop(url) {
-    const pop = document.createElement("script");
-    pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
-
-    pop.onload = () => {
-      const a = document.createElement("a");
-      a.href = url;
-      a.setAttribute("download", url.split("/").pop());
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
-
-    document.body.appendChild(pop);
-  }
-
-  document.getElementById("viewMore").addEventListener("click", () => {
-    loadMemes();
+  selected.forEach(url => {
+    const div = document.createElement("div");
+    div.className = "meme";
+    div.innerHTML = `<img src="${url}" alt="Meme">`;
+    div.onclick = () => downloadWithPop(url);
+    container.appendChild(div);
   });
+}
 
-  window.onload = function() {
-    loadMemes();
+// Popunder + download
+function downloadWithPop(url) {
+  const pop = document.createElement("script");
+  pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
+  pop.onload = () => {
+    const a = document.createElement("a");
+    a.href = url;
+    a.setAttribute("download", url.split("/").pop());
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   };
+  document.body.appendChild(pop);
+}
+
+// Open new tab with same page on "View More"
+document.getElementById("viewMore").addEventListener("click", () => {
+  window.open(window.location.href, "_blank");
+});
+
+window.onload = function() {
+  loadMemes();
+};
 </script>
 
 <!-- Banner ad 320x50 -->
@@ -183,3 +181,4 @@ Click on a meme to start download. Close the ad or press back — your download 
 
 </body>
 </html>
+
