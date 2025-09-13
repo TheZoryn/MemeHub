@@ -20,16 +20,19 @@
   }
 
   h1 {
-    font-size: 2.8em;
+    font-size: 3em;
     margin-bottom: 10px;
     color: #f9d71c; /* premium gold */
     text-shadow: 0 0 10px #f9d71c, 0 0 20px #00e5ff;
   }
 
-  #instruction {
-    font-size: 1.1em;
-    margin-bottom: 20px;
+  #intro-text {
+    font-size: 1.2em;
+    margin-bottom: 25px;
     color: #bbb;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #meme-container {
@@ -62,9 +65,9 @@
   #viewMore {
     background: #00e5ff;
     color: #000;
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 1.2em;
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 1.3em;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -78,31 +81,33 @@
   }
 
   .ad-container {
-    margin: 20px auto;
+    margin: 25px auto;
     text-align: center;
     max-width: 320px;
   }
-
 </style>
 </head>
 <body>
 
 <h1>🔥 Zoryn Meme Hub 🔥</h1>
-<div id="instruction">
-Click on a meme to start download. Close the ad or press back — your download will begin automatically.
+
+<div id="intro-text">
+<p>Welcome to Zoryn Meme Hub, your ultimate destination for premium, high-quality memes and viral content! Explore our curated collection of memes, laugh out loud, and share your favorites with friends. We add new memes every day, so there’s always something fresh to enjoy. Scroll, click, and download your favorites instantly!</p>
+<p>Our platform is designed for meme lovers who want fast access without clutter. Enjoy a seamless browsing experience with stunning visuals and smooth interactions. Join our community and stay updated with the latest viral trends!</p>
 </div>
 
 <div id="meme-container"></div>
 <button id="viewMore">View More Memes</button>
 
-<!-- Adsterra / other ads -->
+<!-- Adsterra scripts commented for testing Google Ads -->
+<!--
 <div class="ad-container">
 <script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
 <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
 </div>
+-->
 
 <script>
-  // Updated GitHub raw links
   const memes = [
     "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
     "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
@@ -147,34 +152,6 @@ Click on a meme to start download. Close the ad or press back — your download 
   document.getElementById("viewMore").addEventListener("click", loadMemes);
   window.onload = loadMemes;
 </script>
-
-<!-- Banner ad 320x50 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
-</div>
-
-<!-- Banner ad 300x250 -->
-<div class="ad-container">
-<script type="text/javascript">
-  atOptions = {
-    'key' : '2918ca768846807031a94b527a5b5c01',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
-</div>
 
 </body>
 </html>
