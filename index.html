@@ -3,100 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MemeHub</title>
+  <title>Zoryn Meme Hub</title>
+
+  <!-- AdSense verification meta -->
+  <meta name="google-adsense-account" content="ca-pub-1931825072551469">
+
   <style>
     body {
-      background-color: #0d1117;
-      color: #c9d1d9;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      margin: 0;
       padding: 20px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      text-align: center;
     }
     h1 {
-      color: #58a6ff;
-      margin-bottom: 20px;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #1e90ff;
+      text-shadow: 2px 2px 5px #000;
+    }
+    #meme-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
     }
     .meme {
-      margin: 20px auto;
-      border: 2px solid #58a6ff;
-      border-radius: 12px;
+      background: #1b1b2f;
+      border-radius: 15px;
       padding: 10px;
-      max-width: 400px;
-      background: #161b22;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      transition: transform 0.2s;
     }
     .meme:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #1e90ff;
     }
     .meme img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-    .instructions {
-      margin: 15px 0;
-      font-size: 14px;
-      color: #8b949e;
-    }
-    .more-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #58a6ff;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .more-btn:hover {
-      background-color: #1f6feb;
+      width: 100%;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to MemeHub 😂</h1>
-  <p class="instructions">👉 Click a meme → ad opens → close/come back → your download starts!</p>
 
-  <div class="meme" onclick="showAdAndDownload('memes/meme1.jpg')">
-    <img src="memes/meme1.jpg" alt="Meme 1">
-    <p>Click to download</p>
-  </div>
+<h1>🔥 Zoryn Meme Hub 🔥</h1>
 
-  <div class="meme" onclick="showAdAndDownload('memes/meme2.jpg')">
-    <img src="memes/meme2.jpg" alt="Meme 2">
-    <p>Click to download</p>
-  </div>
+<div id="meme-container"></div>
 
-  <div class="meme" onclick="showAdAndDownload('memes/meme3.jpg')">
-    <img src="memes/meme3.jpg" alt="Meme 3">
-    <p>Click to download</p>
-  </div>
+<script>
+  const memes = [
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme1.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme2.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme3.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme4.jpg"
+  ];
+  const container = document.getElementById("meme-container");
+  memes.forEach(url => {
+    const div = document.createElement("div");
+    div.className = "meme";
+    div.innerHTML = `<img src="${url}" alt="Meme">`;
+    container.appendChild(div);
+  });
+</script>
 
-  <div class="meme" onclick="showAdAndDownload('memes/meme4.jpg')">
-    <img src="memes/meme4.jpg" alt="Meme 4">
-    <p>Click to download</p>
-  </div>
-
-  <a class="more-btn" href="https://thezoryn.github.io/MemeHub/" target="_blank">View More Memes</a>
-
-  <script>
-    function showAdAndDownload(fileUrl) {
-      // Open your smartlink in a new tab
-      window.open("https://www.revenuecpmgate.com/yj6jz0jce?key=faf035fd65164ec41eca575854da1535", "_blank");
-
-      // After short delay, trigger download
-      setTimeout(() => {
-        let link = document.createElement("a");
-        link.href = fileUrl;
-        link.download = fileUrl.split('/').pop();
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }, 3000); // 3 seconds
-    }
-  </script>
 </body>
 </html>
