@@ -43,10 +43,6 @@
     .ad-container { max-width:100%; }
   }
 </style>
-
-<!-- New Ad Script -->
-<script src="https://fpyf8.com/88/tag.min.js" data-zone="170745" async data-cfasync="false"></script>
-
 </head>
 <body>
 
@@ -141,7 +137,7 @@
     selected.forEach(url=>{
       const div=document.createElement("div");
       div.className="meme";
-      div.innerHTML=`<img src="${url}" alt="Meme">`;
+      div.innerHTML=<img src="${url}" alt="Meme">;
       div.onclick=()=>downloadWithPop(url);
       container.appendChild(div);
     });
