@@ -53,8 +53,21 @@
 
   .sidebar-bottom { margin-top: 20px; text-align:center; }
 
+  /* Vertical right banner */
+  .side-banner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   /* Main content */
-  .main-content { margin-left: 260px; padding: 20px; }
+  .main-content { margin: 0 140px 0 260px; padding: 20px; }
 
   header h1 {
     font-size: 2.5em;
@@ -124,7 +137,8 @@
     .sidebar { position: relative; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; padding: 10px; }
     .sidebar h2 { width: 100%; margin-bottom: 10px; text-align: left; }
     .sidebar-bottom { width: 100%; margin-top: 10px; }
-    .main-content { margin-left: 0; }
+    .main-content { margin-left: 0; margin-right: 0; }
+    .side-banner { display: none; }
   }
 </style>
 </head>
@@ -140,22 +154,24 @@
     <div class="category" data-category="wholesome">Wholesome</div>
     <div class="category" data-category="random">Random</div>
   </div>
-
   <div class="sidebar-bottom">
-    <!-- Adsterra ad -->
-    <div class="ad-container">
-      <script type="text/javascript">
-        atOptions = {
-          'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
-    </div>
     <p>&copy; 2025 Zoryn Meme Hub</p>
+  </div>
+</div>
+
+<!-- Vertical right banner -->
+<div class="side-banner">
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'b5e2c85c8ab83c80e3177fda9b87c8e4',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 120,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/b5e2c85c8ab83c80e3177fda9b87c8e4/invoke.js"></script>
   </div>
 </div>
 
@@ -164,60 +180,44 @@
     <h1>🔥 Zoryn Meme Hub 🔥</h1>
   </header>
 
+  <!-- Native Ad at Top -->
+  <div class="ad-container">
+    <script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
+    <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
+  </div>
+
+  <!-- Smartlink Ad -->
+  <div class="ad-container">
+    <script type="text/javascript" src="//pl27625450.revenuecpmgate.com/smartlink.js"></script>
+  </div>
+
   <div id="intro-text">
-    <p>Welcome to Zoryn Meme Hub! Explore funny, trending, and wholesome memes. Click any meme to download and share with friends. Daily updates keep content fresh!</p>
+    <p>Welcome to Zoryn Meme Hub! Explore funny, trending, and wholesome memes. Click any meme to download and share. Daily updates keep content fresh!</p>
   </div>
 
   <div id="meme-container"></div>
   <button id="viewMore">View More Memes</button>
-
-  <!-- Optional Adsterra banner in main content -->
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '2918ca768846807031a94b527a5b5c01',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
-  </div>
 </div>
 
 <script>
   const memes = {
-    funny: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"
-    ],
-    dank: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"
-    ],
-    trending: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
-    ],
-    wholesome: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg"
-    ],
-    random: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"
-    ]
+    funny: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg","https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"],
+    dank: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"],
+    trending: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"],
+    wholesome: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg"],
+    random: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"]
   };
 
   let currentCategory = 'all';
 
   function getMemes(category){
     if(category === 'all'){
-      return [...memes.funny, ...memes.dank, ...memes.trending, ...memes.wholesome, ...memes.random];
+      return [...memes.funny,...memes.dank,...memes.trending,...memes.wholesome,...memes.random];
     }
     return memes[category] || [];
   }
 
-  function shuffle(array){
-    return array.sort(() => 0.5 - Math.random());
-  }
+  function shuffle(array){ return array.sort(() => 0.5 - Math.random()); }
 
   function loadMemes(){
     const container = document.getElementById("meme-container");
@@ -235,7 +235,6 @@
   function downloadWithPop(url){
     const pop = document.createElement("script");
     pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
-
     pop.onload = () => {
       const a = document.createElement("a");
       a.href = url;
@@ -244,12 +243,10 @@
       a.click();
       a.remove();
     };
-
     document.body.appendChild(pop);
   }
 
   document.getElementById("viewMore").addEventListener("click", loadMemes);
-
   document.querySelectorAll('.category').forEach(cat => {
     cat.addEventListener('click', () => {
       document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
@@ -261,6 +258,5 @@
 
   window.onload = loadMemes;
 </script>
-
 </body>
 </html>
