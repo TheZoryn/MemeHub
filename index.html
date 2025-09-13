@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zoryn Meme Hub</title>
+<title>🔥 Zoryn Meme Hub 🔥</title>
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1931825072551469"
@@ -34,7 +34,7 @@
 
   #meme-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     max-width: 900px;
     margin: auto;
@@ -90,23 +90,22 @@
 Click on a meme to start download. Close the ad or press back — your download will begin automatically.
 </div>
 
-<!-- Native ad -->
+<div id="meme-container"></div>
+<button id="viewMore">View More Memes</button>
+
+<!-- Adsterra / other ads -->
 <div class="ad-container">
 <script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
 <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
 </div>
 
-<div id="meme-container"></div>
-
-<button id="viewMore">View More Memes</button>
-
 <script>
-  // Raw GitHub URLs for your repo TheZoryn/MemeHub
+  // Updated GitHub raw links
   const memes = [
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme1.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme2.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme3.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/memes/meme4.jpg"
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg",
+    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
   ];
 
   function shuffle(array) {
@@ -127,7 +126,6 @@ Click on a meme to start download. Close the ad or press back — your download 
     });
   }
 
-  // Download only after popunder
   function downloadWithPop(url) {
     const pop = document.createElement("script");
     pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
@@ -144,13 +142,8 @@ Click on a meme to start download. Close the ad or press back — your download 
     document.body.appendChild(pop);
   }
 
-  document.getElementById("viewMore").addEventListener("click", () => {
-    loadMemes();
-  });
-
-  window.onload = function() {
-    loadMemes();
-  };
+  document.getElementById("viewMore").addEventListener("click", loadMemes);
+  window.onload = loadMemes;
 </script>
 
 <!-- Banner ad 320x50 -->
@@ -179,11 +172,6 @@ Click on a meme to start download. Close the ad or press back — your download 
   };
 </script>
 <script type="text/javascript" src="//www.highperformanceformat.com/2918ca768846807031a94b527a5b5c01/invoke.js"></script>
-</div>
-
-<!-- Social bar -->
-<div class="ad-container">
-<script type='text/javascript' src='//pl27625440.revenuecpmgate.com/8b/69/cb/8b69cbf7d3956bff327ed78287a2b88f.js'></script>
 </div>
 
 </body>
