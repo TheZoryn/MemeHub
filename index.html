@@ -5,134 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zoryn Meme Hub</title>
 <style>
-  body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background-color: #111;
-    color: #eee;
-  }
+  body { margin:0; font-family:'Orbitron', sans-serif; background-color:#111; color:#eee; }
 
   /* Sidebar */
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100vh;
-    background: #1b1b2f;
-    padding: 20px 10px;
-    box-shadow: 2px 0 15px rgba(0,0,0,0.6);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: fixed; top:0; left:0; width:240px; height:100vh;
+    background:#1b1b2f; padding:20px 10px; box-shadow:2px 0 15px rgba(0,0,0,0.6);
+    display:flex; flex-direction:column; justify-content:space-between;
   }
-
-  .sidebar-top { flex: 1; }
-  .sidebar h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #00e5ff;
-    font-size: 1.6em;
-  }
-  .category {
-    padding: 12px 15px;
-    margin: 5px 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    color: #eee;
-    transition: 0.3s;
-    font-size: 1em;
-  }
-  .category:hover, .category.active {
-    background: #00e5ff;
-    color: #111;
-  }
-  .sidebar-bottom { margin-top: 20px; text-align:center; }
+  .sidebar-top { flex:1; }
+  .sidebar h2 { text-align:center; margin-bottom:30px; color:#00e5ff; font-size:1.6em; }
+  .category { padding:12px 15px; margin:5px 10px; cursor:pointer; border-radius:8px; color:#eee; transition:0.3s; font-size:1em; }
+  .category:hover, .category.active { background:#00e5ff; color:#111; }
+  .sidebar-bottom { margin-top:20px; text-align:center; }
 
   /* Vertical right banner */
-  .side-banner {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 120px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  .side-banner { position:fixed; top:0; right:0; width:120px; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 
   /* Main content */
-  .main-content { margin: 0 140px 0 260px; padding: 20px; }
+  .main-content { margin:0 140px 0 260px; padding:20px; }
+  header h1 { font-size:2.5em; color:#00e5ff; text-shadow:0 0 10px #00e5ff; text-align:center; }
+  #intro-text { font-size:1.1em; margin:20px auto; max-width:900px; color:#bbb; text-align:center; }
+  #meme-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:20px; }
+  .meme { background:#1e1e2f; border-radius:12px; padding:10px; box-shadow:0 4px 10px rgba(0,255,255,0.2); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+  .meme img { width:100%; border-radius:10px; }
+  .meme:hover { transform:translateY(-5px); box-shadow:0 0 20px #00e5ff,0 0 30px #00e5ff; }
+  #viewMore { display:block; margin:30px auto 50px; padding:14px 35px; font-size:1.3em; font-weight:bold; background:#00e5ff; color:#111; border:none; border-radius:15px; cursor:pointer; transition:0.3s; box-shadow:0 4px 15px rgba(0,255,255,0.4); }
+  #viewMore:hover { background:#0ff; box-shadow:0 4px 20px rgba(0,255,255,0.6); }
+  .ad-container { margin:20px auto; text-align:center; max-width:480px; }
 
-  header h1 {
-    font-size: 2.5em;
-    color: #00e5ff;
-    text-shadow: 0 0 10px #00e5ff;
-    text-align: center;
-  }
-
-  #intro-text {
-    font-size: 1.1em;
-    margin: 20px auto;
-    max-width: 900px;
-    color: #bbb;
-    text-align: center;
-  }
-
-  #meme-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .meme {
-    background: #1e1e2f;
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,255,255,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-  .meme img { width: 100%; border-radius: 10px; }
-  .meme:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px #00e5ff, 0 0 30px #00e5ff;
-  }
-
-  #viewMore {
-    display: block;
-    margin: 30px auto 50px;
-    padding: 14px 35px;
-    font-size: 1.3em;
-    font-weight: bold;
-    background: #00e5ff;
-    color: #111;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0,255,255,0.4);
-  }
-  #viewMore:hover {
-    background: #0ff;
-    box-shadow: 0 4px 20px rgba(0,255,255,0.6);
-  }
-
-  .ad-container {
-    margin: 20px auto;
-    text-align: center;
-    max-width: 480px;
-  }
-
-  @media(max-width: 768px){
-    .sidebar { position: relative; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; padding: 10px; }
-    .sidebar h2 { width: 100%; margin-bottom: 10px; text-align: left; }
-    .sidebar-bottom { width: 100%; margin-top: 10px; }
-    .main-content { margin-left: 0; margin-right: 0; }
-    .side-banner { display: none; }
-    .ad-container { max-width: 100%; }
+  @media(max-width:768px){
+    .sidebar { position:relative; width:100%; height:auto; flex-direction:row; flex-wrap:wrap; padding:10px; }
+    .sidebar h2 { width:100%; margin-bottom:10px; text-align:left; }
+    .sidebar-bottom { width:100%; margin-top:10px; }
+    .main-content { margin-left:0; margin-right:0; }
+    .side-banner { display:none; }
+    .ad-container { max-width:100%; }
   }
 </style>
 </head>
@@ -212,20 +120,20 @@
 
 <script>
   const memes = {
-    funny: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg","https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"],
-    dank: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"],
-    trending: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"],
-    wholesome: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg"],
-    random: ["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"]
+    funny:["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg","https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"],
+    dank:["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"],
+    trending:["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"],
+    wholesome:["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg"],
+    random:["https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"]
   };
 
-  let currentCategory = 'all';
+  let currentCategory='all';
   function getMemes(category){ return category==='all'? [...memes.funny,...memes.dank,...memes.trending,...memes.wholesome,...memes.random] : memes[category] || []; }
-  function shuffle(array){ return array.sort(() => 0.5 - Math.random()); }
+  function shuffle(array){ return array.sort(()=>0.5-Math.random()); }
   function loadMemes(){
-    const container = document.getElementById("meme-container");
-    container.innerHTML = "";
-    const selected = shuffle(getMemes(currentCategory));
+    const container=document.getElementById("meme-container");
+    container.innerHTML="";
+    const selected=shuffle(getMemes(currentCategory));
     selected.forEach(url=>{
       const div=document.createElement("div");
       div.className="meme";
@@ -259,8 +167,7 @@
     });
   });
 
-  window.onload = loadMemes;
+  window.onload=loadMemes;
 </script>
-
 </body>
 </html>
