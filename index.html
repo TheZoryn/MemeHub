@@ -1,239 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zoryn Meme Hub</title>
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1931825072551469"
-     crossorigin="anonymous"></script>
-
-<style>
-  body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background-color: #111;
-    color: #eee;
-  }
-
-  /* Sidebar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100vh;
-    background: #1e1e2f;
-    padding: 20px 0;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sidebar h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #00e5ff;
-    font-size: 1.5em;
-    text-shadow: 0 0 5px #00e5ff;
-  }
-
-  .category {
-    padding: 15px 20px;
-    margin: 5px 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    color: #eee;
-    transition: 0.3s;
-  }
-
-  .category:hover, .category.active {
-    background: #f9d71c;
-    color: #000;
-  }
-
-  /* Main content */
-  .main-content {
-    margin-left: 240px;
-    padding: 20px;
-  }
-
-  header h1 {
-    font-size: 2.5em;
-    color: #f9d71c;
-    text-shadow: 0 0 10px #f9d71c, 0 0 20px #00e5ff;
-    text-align: center;
-  }
-
-  #intro-text {
-    font-size: 1.1em;
-    margin: 20px auto;
-    max-width: 900px;
-    color: #bbb;
-    text-align: center;
-  }
-
-  #meme-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .meme {
-    background: #1e1e2f;
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,255,255,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-
-  .meme img {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .meme:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px #f9d71c, 0 0 30px #00e5ff;
-  }
-
-  #viewMore {
-    display: block;
-    margin: 30px auto 50px;
-    padding: 12px 30px;
-    font-size: 1.2em;
-    font-weight: bold;
-    background: #00e5ff;
-    color: #000;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  #viewMore:hover {
-    background: #f9d71c;
-    color: #000;
-  }
-
-  /* Responsive */
-  @media(max-width: 768px){
-    .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-    }
-
-    .main-content {
-      margin-left: 0;
-    }
-  }
-</style>
-</head>
-<body>
-
 <div class="sidebar">
-  <h2>Categories</h2>
-  <div class="category active" data-category="all">All Memes</div>
-  <div class="category" data-category="funny">Funny</div>
-  <div class="category" data-category="dank">Dank</div>
-  <div class="category" data-category="trending">Trending</div>
-</div>
-
-<div class="main-content">
-  <header>
-    <h1>🔥 Zoryn Meme Hub 🔥</h1>
-  </header>
-
-  <div id="intro-text">
-    <p>Welcome to Zoryn Meme Hub! Explore the funniest, dankest, and trending memes curated for meme lovers. Click on any meme to download and share with your friends. We update daily with fresh content!</p>
+  <div class="sidebar-top">
+    <h2>Categories</h2>
+    <div class="category active" data-category="all">All Memes</div>
+    <div class="category" data-category="funny">Funny</div>
+    <div class="category" data-category="dank">Dank</div>
+    <div class="category" data-category="trending">Trending</div>
+    <div class="category" data-category="wholesome">Wholesome</div>
+    <div class="category" data-category="random">Random</div>
   </div>
 
-  <div id="meme-container"></div>
-  <button id="viewMore">View More Memes</button>
-
-  <!-- Adsterra scripts commented for testing Google Ads -->
-  <!--
-  <div class="ad-container">
-    <script async src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
-    <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
+  <div class="sidebar-bottom">
+    <!-- Google AdSense -->
+    <div class="ad-container">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1931825072551469"
+        crossorigin="anonymous"></script>
+      <!-- ads1 -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1931825072551469"
+           data-ad-slot="7329954701"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <p>&copy; 2025 Zoryn Meme Hub</p>
   </div>
-  -->
 </div>
-
-<script>
-  const memes = {
-    funny: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"
-    ],
-    dank: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"
-    ],
-    trending: [
-      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
-    ]
-  };
-
-  let currentCategory = 'all';
-
-  function getMemes(category){
-    if(category === 'all'){
-      return [...memes.funny, ...memes.dank, ...memes.trending];
-    }
-    return memes[category] || [];
-  }
-
-  function shuffle(array){
-    return array.sort(() => 0.5 - Math.random());
-  }
-
-  function loadMemes(){
-    const container = document.getElementById("meme-container");
-    container.innerHTML = "";
-    const selected = shuffle(getMemes(currentCategory));
-    selected.forEach(url => {
-      const div = document.createElement("div");
-      div.className = "meme";
-      div.innerHTML = `<img src="${url}" alt="Meme">`;
-      div.onclick = () => downloadWithPop(url);
-      container.appendChild(div);
-    });
-  }
-
-  function downloadWithPop(url){
-    const pop = document.createElement("script");
-    pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
-
-    pop.onload = () => {
-      const a = document.createElement("a");
-      a.href = url;
-      a.setAttribute("download", url.split("/").pop());
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
-
-    document.body.appendChild(pop);
-  }
-
-  document.getElementById("viewMore").addEventListener("click", loadMemes);
-
-  // Category click
-  document.querySelectorAll('.category').forEach(cat => {
-    cat.addEventListener('click', () => {
-      document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
-      cat.classList.add('active');
-      currentCategory = cat.getAttribute('data-category');
-      loadMemes();
-    });
-  });
-
-  window.onload = loadMemes;
-</script>
-
-</body>
-</html>
