@@ -14,44 +14,44 @@
     margin: 0;
     padding: 20px;
     font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #fff;
+    background: linear-gradient(135deg, #0a0a0a, #1c1c1c, #111111);
+    color: #eee;
     text-align: center;
   }
 
   h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 10px;
-    color: #1e90ff;
-    text-shadow: 2px 2px 5px #000;
+    color: #f9d71c; /* premium gold */
+    text-shadow: 0 0 10px #f9d71c, 0 0 20px #00e5ff;
   }
 
   #instruction {
     font-size: 1.1em;
     margin-bottom: 20px;
-    color: #aaa;
+    color: #bbb;
   }
 
   #meme-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
   }
 
   .meme {
-    background: #1b1b2f;
+    background: #1e1e2f;
     border-radius: 15px;
     padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
   }
 
   .meme:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px #1e90ff;
+    box-shadow: 0 0 20px #f9d71c, 0 0 30px #00e5ff;
   }
 
   .meme img {
@@ -60,8 +60,8 @@
   }
 
   #viewMore {
-    background: #1e90ff;
-    color: #fff;
+    background: #00e5ff;
+    color: #000;
     margin-top: 20px;
     padding: 12px 24px;
     font-size: 1.2em;
@@ -69,10 +69,12 @@
     border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: bold;
   }
 
   #viewMore:hover {
-    background: #00bfff;
+    background: #f9d71c;
+    color: #000;
   }
 
   .ad-container {
