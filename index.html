@@ -12,35 +12,78 @@
 <style>
   body {
     margin: 0;
-    padding: 20px;
     font-family: 'Orbitron', sans-serif;
     background: linear-gradient(135deg, #0a0a0a, #1c1c1c, #111111);
     color: #eee;
-    text-align: center;
   }
 
-  h1 {
+  /* Header */
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+
+  header h1 {
     font-size: 3em;
-    margin-bottom: 10px;
-    color: #f9d71c; /* premium gold */
+    color: #f9d71c;
     text-shadow: 0 0 10px #f9d71c, 0 0 20px #00e5ff;
   }
 
+  /* Layout */
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    min-width: 200px;
+    background: #1e1e2f;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,255,255,0.2);
+    height: fit-content;
+  }
+
+  .sidebar h2 {
+    font-size: 1.5em;
+    color: #00e5ff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px #00e5ff;
+  }
+
+  .category {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #eee;
+  }
+
+  .category:hover, .category.active {
+    background: #f9d71c;
+    color: #000;
+  }
+
+  /* Main content */
+  .main-content {
+    flex: 1;
+  }
+
   #intro-text {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 25px;
     color: #bbb;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   #meme-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    max-width: 1000px;
-    margin: auto;
   }
 
   .meme {
@@ -67,7 +110,7 @@
     color: #000;
     margin-top: 25px;
     padding: 12px 28px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -85,45 +128,88 @@
     text-align: center;
     max-width: 320px;
   }
+
+  /* Responsive */
+  @media(max-width: 768px){
+    .container {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
 </style>
 </head>
 <body>
 
-<h1>🔥 Zoryn Meme Hub 🔥</h1>
+<header>
+  <h1>🔥 Zoryn Meme Hub 🔥</h1>
+</header>
 
-<div id="intro-text">
-<p>Welcome to Zoryn Meme Hub, your ultimate destination for premium, high-quality memes and viral content! Explore our curated collection of memes, laugh out loud, and share your favorites with friends. We add new memes every day, so there’s always something fresh to enjoy. Scroll, click, and download your favorites instantly!</p>
-<p>Our platform is designed for meme lovers who want fast access without clutter. Enjoy a seamless browsing experience with stunning visuals and smooth interactions. Join our community and stay updated with the latest viral trends!</p>
+<div class="container">
+  <!-- Sidebar with categories -->
+  <div class="sidebar">
+    <h2>Categories</h2>
+    <div class="category active" data-category="all">All Memes</div>
+    <div class="category" data-category="funny">Funny</div>
+    <div class="category" data-category="dank">Dank</div>
+    <div class="category" data-category="trending">Trending</div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div id="intro-text">
+      <p>Welcome to Zoryn Meme Hub! Explore the funniest, dankest, and trending memes curated for meme lovers. Click on any meme to download and share with your friends. We update daily with fresh content!</p>
+    </div>
+
+    <div id="meme-container"></div>
+    <button id="viewMore">View More Memes</button>
+
+    <!-- Adsterra scripts commented for testing Google Ads -->
+    <!--
+    <div class="ad-container">
+      <script async src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
+      <div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
+    </div>
+    -->
+  </div>
 </div>
-
-<div id="meme-container"></div>
-<button id="viewMore">View More Memes</button>
-
-<!-- Adsterra scripts commented for testing Google Ads -->
-<!--
-<div class="ad-container">
-<script async="async" data-cfasync="false" src="//pl27625414.revenuecpmgate.com/9fbf50b1828b5d3d98543ee00ac697be/invoke.js"></script>
-<div id="container-9fbf50b1828b5d3d98543ee00ac697be"></div>
-</div>
--->
 
 <script>
-  const memes = [
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg",
-    "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
-  ];
+  // Meme data by category
+  const memes = {
+    funny: [
+      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme1.jpg",
+      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme2.jpg"
+    ],
+    dank: [
+      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme3.jpg"
+    ],
+    trending: [
+      "https://raw.githubusercontent.com/TheZoryn/MemeHub/main/meme4.jpg"
+    ]
+  };
 
-  function shuffle(array) {
+  let currentCategory = 'all';
+
+  function getMemes(category){
+    if(category === 'all'){
+      return [...memes.funny, ...memes.dank, ...memes.trending];
+    }
+    return memes[category] || [];
+  }
+
+  function shuffle(array){
     return array.sort(() => 0.5 - Math.random());
   }
 
-  function loadMemes() {
+  function loadMemes(){
     const container = document.getElementById("meme-container");
     container.innerHTML = "";
-    const selected = shuffle(memes).slice(0,4);
-
+    const selected = shuffle(getMemes(currentCategory));
     selected.forEach(url => {
       const div = document.createElement("div");
       div.className = "meme";
@@ -133,7 +219,7 @@
     });
   }
 
-  function downloadWithPop(url) {
+  function downloadWithPop(url){
     const pop = document.createElement("script");
     pop.src = "//pl27625438.revenuecpmgate.com/2c/38/08/2c3808bf45668b303b58c8879a4b4ed0.js";
 
@@ -150,6 +236,17 @@
   }
 
   document.getElementById("viewMore").addEventListener("click", loadMemes);
+
+  // Category click
+  document.querySelectorAll('.category').forEach(cat => {
+    cat.addEventListener('click', () => {
+      document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+      currentCategory = cat.getAttribute('data-category');
+      loadMemes();
+    });
+  });
+
   window.onload = loadMemes;
 </script>
 
